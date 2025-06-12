@@ -10,29 +10,18 @@
     <header>
       <h1>Welcome to Our Pet Store</h1>
       <nav>
-        <a href="#">Home</a>
+        <a href="index.html">Home</a>
         <a href="pets.html">Pets</a>
         <a href="#Contact">Contact</a>
       </nav>
     </header>
     <main>
       <section class="featured">
-        <h2>Featured Pets</h2>
-        <div class="pet-list">
-          <div class="pet">
-            <img src="img/dog.jpg" alt="Cute Dog" />
-            <p>Charlie - Golden Retriever</p>
-            <button onclick="adoptPet()">Adopt Now</button>
-          </div>
-          <div class="pet">
-            <img src="img/cat.webp" alt="Cute Cat" />
-            <p>Milo - British Shorthair</p>
-            <button onclick="adoptPet()">Adopt Now</button>
-          </div>
-        </div>
+        <h2>All Pets</h2>
+        <div id="all-pets" class="pet-list"></div>
       </section>
     </main>
-    <footer>
+    <footer id="Contact">
       <div style="text-align: center">
         <p>&copy; 2023 Pet Store</p>
         <p>123 Pet Lane, Animal City, AC 12345</p>
@@ -52,5 +41,6 @@
       </div>
     </footer>
     <script src="script.js"></script>
+    <script src="loadpets.js"></script>
   </body>
 </html>
