@@ -49,16 +49,39 @@ const pets = [
     }
 ];
 
-var ap = document.getElementById("all-pets")
+function loadPets() {
+    console.log("Loading pets...");
+    const petContainer = document.getElementById("all-pets");
+    pets.forEach(pet => {
+        const petDiv = document.createElement("div");
+        petDiv.className = "pet";
+        petDiv.innerHTML = `
+            <img src="${pet.img}" alt="${pet.name}">
+            <h3>${pet.name}</h3>
+            <p>Type: ${pet.type}</p>
+            <p>Age: ${pet.age} years</p>
+            <button class="adopt-btn" onclick="adoptPet()">Adopt</button>
+        `;
+        petContainer.appendChild(petDiv);
+        $('input[name="pet-type"]').on("change", function () {
+            filterPets();
 
-for (let i = 0; i < pets.length; i++) {
-    var aPet = ap.appendChild(document.createElement("div"));
-    aPet.className = "pet";
-    aPet.innerHTML = `
-    <img src="${pets[i].img}" alt="${pets[i].name}">
-    <h3>${pets[i].name}</h3>
-    <p>Type: ${pets[i].type}</p>
-    <p>Age: ${pets[i].age} years</p>
-    <button onclick="adoptPet()">Adopt Now</button>
-`;
+        });
+    });
 }
+
+function filterPets() {
+    const selectedTypes = $('input[name="pet-type"]:checked').map(function () {
+        return this.value;
+    }).get();
+
+    $('.pet').each(function () {
+        const petType = $(this).find('p').first().text().replace('Type: ', '');
+        if (selectedTypes.includes(petType)) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+}
+$(document).ready(loadPets);
